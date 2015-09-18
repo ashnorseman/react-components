@@ -1,0 +1,50 @@
+/**
+ * Created by AshZhang on 15/9/11.
+ */
+
+
+@import "../../../common/styles/_variable";
+
+
+table {
+  border-collapse: collapse;
+  table-layout: fixed;
+  text-align: center;
+  width: 100%;
+}
+
+th,
+td {
+  padding: (@control-height - @font-base * @line-height) / 2;
+}
+
+th {
+  background: @color-bg-light;
+  font-weight: 400;
+  position: relative;
+
+  &:before {
+    background: @color-border;
+    content: ' ';
+    position: absolute;
+      bottom: (@control-height - @font-base * @line-height) / 2;
+      left: 0;
+      top: (@control-height - @font-base * @line-height) / 2;
+    width: @border-width;
+  }
+
+  &:first-child:before {
+    display: none;
+  }
+}
+
+tbody > tr {
+
+  &:nth-child(odd) {
+    background: @color-white;
+  }
+
+  &:nth-child(even) {
+    background: @color-bg-lightest;
+  }
+}

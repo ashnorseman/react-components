@@ -1,0 +1,197 @@
+/**
+ * Created by AshZhang on 15/9/16.
+ */
+
+
+@import "../../../common/styles/_variable";
+
+
+@control-border:  @border-width * 2;
+@input-height:    @control-height;
+@control-padding: (@input-height - @font-base * @line-height) / 2;
+
+
+// General
+// ---------------------------
+
+button,
+[type=text],
+[type=number],
+[type=file],
+select,
+textarea {
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  appearance: none;
+  background: @color-white;
+  border: 0;
+  border-bottom: @control-border solid @color-border;
+  border-radius: 0;
+  display: block;
+  height: @input-height;
+  outline: none;
+  padding: 0;
+  width: 100%;
+}
+
+::-webkit-input-placeholder { color: @color-text-lighter; }
+::-moz-placeholder { color: @color-text-lighter; }
+:-ms-input-placeholder { color: @color-text-lighter; }
+:-moz-placeholder { color: @color-text-lighter; }
+
+input:focus::-webkit-input-placeholder { color: @color-white; }
+textarea:focus::-webkit-input-placeholder { color: @color-white; }
+input:focus::-moz-placeholder { color: @color-white; }
+textarea:focus::-moz-placeholder { color: @color-white; }
+input:focus:-ms-input-placeholder { color: @color-white; }
+textarea:focus:-ms-input-placeholder { color: @color-white; }
+input:focus:-moz-placeholder { color: @color-white; }
+textarea:focus:-moz-placeholder { color: @color-white; }
+
+.form-invalid::-webkit-input-placeholder { color: @color-white; }
+.form-invalid::-moz-placeholder { color: @color-white; }
+.form-invalid:-ms-input-placeholder { color: @color-white; }
+.form-invalid:-moz-placeholder { color: @color-white; }
+
+
+// Form Structure
+// ---------------------------
+
+.form-line {
+  margin-top: @font-base * 2;
+  padding: 0 @gap;
+  position: relative;
+}
+
+.form-label {
+  color: @color-text-lighter;
+  position: absolute;
+    left: @gap;
+    top: @control-padding;
+    z-index: -1;
+
+  input:focus ~ &,
+  select:focus ~ &,
+  textarea:focus ~ &,
+  .form-dirty > &,
+  .form-invalid > & {
+    font-size: @font-sm;
+    //z-index: 1;
+    -webkit-transform: translateY(-@font-base - @control-padding);
+    transform: translateY(-@font-base - @control-padding);
+    -webkit-transition: -webkit-transform @duration @timing;
+    transition: transform @duration @timing;
+  }
+
+  .form-dirty > & {
+    color: @color-text-lighter;
+  }
+
+  input:focus ~ &,
+  select:focus ~ &,
+  textarea:focus ~ & {
+    color: @color-secondary;
+  }
+
+  html .form-invalid > & {
+    color: @color-primary;
+  }
+}
+
+.form-tips {
+  display: none;
+
+  input:focus ~ .form-label > &,
+  select:focus ~ .form-label > &,
+  textarea:focus ~ .form-label > &,
+  .form-invalid & {
+    display: inline;
+  }
+}
+
+.form-control-border {
+  border-bottom: @control-border solid @color-secondary;
+  position: absolute;
+    bottom: 0;
+    left: @gap;
+    right: @gap;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition: -webkit-transform @duration @timing;
+  transition: transform @duration @timing;
+
+  input:focus ~ &,
+  select:focus ~ &,
+  textarea:focus ~ &,
+  .form-invalid > & {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+  }
+
+  .form-invalid > & {
+    border-bottom-color: @color-primary;
+  }
+}
+
+.form-submit {
+  padding: 0.375rem @gap;
+}
+
+
+// Button
+// ---------------------------
+
+button {
+  border-radius: @border-radius;
+  background: @color-primary;
+  border: 0;
+  color: @color-white;
+  letter-spacing: 1rem;
+  text-indent: 1rem;
+}
+
+button[disabled] {
+  background: @color-disabled;
+}
+
+
+// Textarea
+// ---------------------------
+
+textarea {
+  height: @font-base * @line-height * 3 + @control-padding * 2;
+  padding: @control-padding 0;
+  resize: none;
+}
+
+
+// Select
+// ---------------------------
+
+.form-empty > select {
+  color: @color-text-lighter;
+}
+
+select:focus {
+  color: @color-text;
+}
+
+.form-invalid > select {
+  color: @color-white;
+}
+
+
+// File
+// ---------------------------
+
+[type=file] {
+  padding-top: (@control-height - @font-base) / 2;
+}
+
+
+// Validation
+// ---------------------------
+
+.form-invalid {
+  color: @color-primary;
+}

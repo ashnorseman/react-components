@@ -1,0 +1,29 @@
+/**
+ * Created by AshZhang on 15/9/13.
+ */
+
+
+@import "../../../common/styles/_variable";
+
+
+.message {
+  background: @color-trans-dark;
+  border-radius: @border-radius;
+  color: @color-white;
+  max-width: 90%;
+  padding: (@control-height - @font-base * @line-height) / 2 @font-base;
+  position: absolute;
+    left: 50%;
+    top: 50%;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+  -webkit-transition: -webkit-transform @duration @timing;
+  transition: transform @duration @timing;
+
+  &.opened {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition-timing-function: @bounce;
+    transition-timing-function: @bounce;
+  }
+}

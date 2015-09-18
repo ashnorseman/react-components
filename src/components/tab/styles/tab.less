@@ -1,0 +1,41 @@
+/**
+ * Created by AshZhang on 15/9/13.
+ */
+
+
+@import "../../../common/styles/_variable";
+
+@tab-bottom-width:  @border-width * 2;
+
+.tab {
+  background: @color-white;
+  display: table;
+  overflow: hidden;
+  table-layout: fixed;
+  text-align: center;
+  width: 100%;
+}
+
+.tab-item {
+  border-bottom: @border-width solid @color-border;
+  color: @color-text;
+  display: table-cell;
+  line-height: @control-height - @border-width;
+  position: relative;
+
+  &:after {
+    background: @color-primary;
+    content: ' ';
+    height: @tab-bottom-width;
+    position: absolute;
+      bottom: -@border-width - @tab-bottom-width;
+      left: 0;
+    width: 100%;
+    -webkit-transition: all @duration @timing;
+    transition: all @duration @timing;
+  }
+
+  &.active:after {
+    bottom: -@border-width;
+  }
+}

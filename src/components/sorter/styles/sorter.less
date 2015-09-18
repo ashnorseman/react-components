@@ -1,0 +1,50 @@
+/**
+ * Created by AshZhang on 15/9/13.
+ */
+
+
+@import "../../../common/styles/_variable";
+
+
+.sorter {
+  background: @color-bg-light;
+  display: table;
+  overflow: hidden;
+  table-layout: fixed;
+  text-align: center;
+  width: 100%;
+}
+
+.sorter-item {
+  border-bottom: @border-width solid @color-border;
+  color: @color-text;
+  display: table-cell;
+  line-height: @control-height - @border-width;
+  position: relative;
+
+  &.active {
+    color: @color-primary;
+  }
+
+  &:after {
+    content: '\e617';
+    display: inline-block;
+    font-family: "iconfont", sans-serif !important;
+    margin-left: 0.125rem;
+    position: absolute;
+    visibility: hidden;
+    -webkit-transform: rotate(-180deg);
+    transform: rotate(-180deg);
+    -webkit-transition: -webkit-transform @duration @timing;
+    transition: transform @duration @timing;
+  }
+
+  &.active:after {
+    visibility: visible;
+  }
+
+  &.desc:after {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+}
